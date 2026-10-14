@@ -1,0 +1,16 @@
+{
+  "name": "pingroom-starter-daily-digest",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Send one PingRoom summary of a closed UTC day of business events.",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node scripts/digest.mjs",
+    "connect": "node scripts/connect.mjs",
+    "demo": "node scripts/demo.mjs",
+    "test": "node --test"
+  },
+  "dependencies": { "@pingroom/cli": "0.13.0" }
+}

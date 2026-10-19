@@ -41,7 +41,8 @@ in the selected directory.
 
 Alternatively, set both `PINGROOM_TOKEN` and `PINGROOM_ROOM`. If either variable
 is provided, both must be nonempty. Blank values also prevent fallback to a saved
-connection. Leave both unset to use `npm run connect`.
+connection. Leave both unset to use `npm run connect`. When `CI` is set, both are
+required and a saved connection is never read.
 
 Commands load `.env` from the working directory. Existing environment values
 take precedence. The starter uses the production PingRoom API and keeps tokens

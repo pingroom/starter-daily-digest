@@ -200,6 +200,7 @@ test('partial environment credentials are rejected before saved credentials are 
   await assert.rejects(loadConnection({ PINGROOM_ROOM: 'ROOM', PINGROOM_HOME: '/never-read' }), /both/);
   await assert.rejects(loadConnection({ PINGROOM_TOKEN: '', PINGROOM_ROOM: '', PINGROOM_HOME: '/never-read' }), /both/);
   await assert.rejects(loadConnection({ PINGROOM_TOKEN: ' ', PINGROOM_HOME: '/never-read' }), /both/);
+  await assert.rejects(loadConnection({ CI: 'true', PINGROOM_HOME: '/never-read' }), /both/);
   const manifest = buildManifest(encode([event()]), day, destinationHash(connection));
   assert.ok([...manifest.message].length <= 120);
   assert.doesNotMatch(JSON.stringify(manifest), /test-token/);

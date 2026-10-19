@@ -154,8 +154,9 @@ test('real pinned CLI sends one summary to the mock API and repeated day sends n
     let body = '';
     for await (const chunk of req) body += chunk;
     requests.push({ path: req.url, token: req.headers.authorization, body: JSON.parse(body) });
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end('{"success":true,"notification_id":"00000000-0000-0000-0000-000000000001"}');
+    // The agent route answers 201 with the created notification row; its `id` is the notification ID.
+    res.writeHead(201, { 'Content-Type': 'application/json' });
+    res.end('{"id":"00000000-0000-0000-0000-000000000001","type":"sent"}');
   });
   const previousWebhook = process.env.PINGROOM_WEBHOOK_URL;
   process.env.PINGROOM_WEBHOOK_URL = `${apiUrl}/wrong-webhook`;
